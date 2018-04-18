@@ -53,13 +53,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
+        Log.e(LOG_TAG, Long.toString(currentDate.getTimeInMillis()));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
         datePicker = findViewById(R.id.date_picker);
         datePickerTextView = findViewById(R.id.date_picker_text_view);
-        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(currentDate.getTimeInMillis() + 3600000));
+        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(TimeZone.getTimeZone("Turkey").getOffset(currentDate.getTimeInMillis()) + currentDate.getTimeInMillis()));
 
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,11 +75,10 @@ public class MainActivity extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
 
                                 selectedDate.set(year, monthOfYear, dayOfMonth);
-                                datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(selectedDate.getTime()));
+                                datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
                             }
                         }, selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.getDatePicker().setMinDate(Calendar.getInstance().getTimeInMillis() - currentDate.get(Calendar.HOUR_OF_DAY) * 3600000
-                        - currentDate.get(Calendar.MINUTE) * 60000);
+                datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
                 datePickerDialog.show();
             }
         });
@@ -85,8 +86,7 @@ public class MainActivity extends AppCompatActivity {
         timePicker = findViewById(R.id.time_picker);
         timePickerTextView = findViewById(R.id.time_picker_text_view);
         selectedDate.setTimeInMillis(currentDate.getTimeInMillis() + 3600000);
-        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(currentDate.getTimeInMillis() + 3600000));
-
+        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
         timePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,13 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000) {
 
-                                    timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(selectedDate.getTime()));
+                                    timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
 
                                 } else {
 
                                     Toast.makeText(MainActivity.this, R.string.at_least_one_hour, Toast.LENGTH_SHORT).show();
-                                    selectedDate.set(Calendar.HOUR_OF_DAY, currentDate.get(Calendar.HOUR_OF_DAY));
-                                    selectedDate.set(Calendar.MINUTE, currentDate.get(Calendar.MINUTE));
+                                    selectedDate.setTimeInMillis(currentDate.getTimeInMillis() + 3600000);
                                 }
                             }
                         }, selectedDate.get(Calendar.HOUR_OF_DAY), selectedDate.get(Calendar.MINUTE), true);
