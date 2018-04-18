@@ -27,13 +27,15 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private static final Calendar selectedDate = Calendar.getInstance();
-    private static final Calendar currentDate =  Calendar.getInstance();
+    private static final Calendar selectedDate = Calendar.getInstance(TimeZone.getTimeZone("Turkey"));
+    private static final Calendar currentDate = Calendar.getInstance(TimeZone.getTimeZone("Turkey"));
     private static boolean isInternational;
     private static boolean haveLuggage;
     private Switch luggageSwitch;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         datePicker = findViewById(R.id.date_picker);
         datePickerTextView = findViewById(R.id.date_picker_text_view);
-        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(currentDate.getTime()));
+        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(currentDate.getTimeInMillis() + 3600000));
 
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
 
         timePicker = findViewById(R.id.time_picker);
         timePickerTextView = findViewById(R.id.time_picker_text_view);
-        selectedDate.set(Calendar.HOUR_OF_DAY, currentDate.get(Calendar.HOUR_OF_DAY) + 1);
-        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(selectedDate.getTimeInMillis()));
+        selectedDate.setTimeInMillis(currentDate.getTimeInMillis() + 3600000);
+        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(currentDate.getTimeInMillis() + 3600000));
 
         timePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,19 +101,18 @@ public class MainActivity extends AppCompatActivity {
                                 selectedDate.set(Calendar.HOUR_OF_DAY, hourOfDay);
                                 selectedDate.set(Calendar.MINUTE, minute);
 
-                                if(selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000){
+                                if (selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000) {
 
                                     timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(selectedDate.getTime()));
 
-                                }
-                                else{
+                                } else {
 
                                     Toast.makeText(MainActivity.this, R.string.at_least_one_hour, Toast.LENGTH_SHORT).show();
                                     selectedDate.set(Calendar.HOUR_OF_DAY, currentDate.get(Calendar.HOUR_OF_DAY));
                                     selectedDate.set(Calendar.MINUTE, currentDate.get(Calendar.MINUTE));
                                 }
                             }
-                        }, selectedDate.get(Calendar.HOUR_OF_DAY) , selectedDate.get(Calendar.MINUTE), true);
+                        }, selectedDate.get(Calendar.HOUR_OF_DAY), selectedDate.get(Calendar.MINUTE), true);
                 timePickerDialog.show();
             }
         });
@@ -159,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int k, long l) {
                         AirportOrganizer.setBoardingPoint(ruleMap.get(selectedAirport).get(k));
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
                         AirportOrganizer.setBoardingPoint(ruleMap.get(selectedAirport).get(0));
@@ -174,8 +176,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
         Button sendButton = findViewById(R.id.send_button);
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,16 +185,15 @@ public class MainActivity extends AppCompatActivity {
                 NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
                 boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
-                if(selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000){
+                if (selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000) {
 
                     if (isConnected) {
                         Intent activityChangeIntent = new Intent(view.getContext(), ResultActivity.class);
                         startActivity(activityChangeIntent);
                         return;
-                    }
-                    else Toast.makeText(MainActivity.this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
-                }
-                else{
+                    } else
+                        Toast.makeText(MainActivity.this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
+                } else {
 
                     Toast.makeText(MainActivity.this, R.string.at_least_one_hour, Toast.LENGTH_SHORT).show();
                 }
@@ -221,17 +220,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static boolean isInternational(){
+    public static boolean isInternational() {
 
         return isInternational;
     }
 
-    public static boolean haveLuggage(){
+    public static boolean haveLuggage() {
 
         return haveLuggage;
     }
 
-    public static Calendar getSelectedDate(){
+    public static Calendar getSelectedDate() {
 
         return selectedDate;
     }
