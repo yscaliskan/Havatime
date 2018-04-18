@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    android:weightSum="3.5">
+    android:weightSum="3.4"
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <TextView
 
         android:id="@+id/destination_header_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="16dp"
         android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         tools:text="TAKSIM -> ISTANBUL ATATURK" />
 
     <LinearLayout
@@ -43,15 +45,15 @@
             <TextView
 
                 android:id="@+id/shuttle_risk_1"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:background="@drawable/risk_circle"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/risk_text_size"
-                tools:text="86" />
+                tools:text="86"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,10 +67,11 @@
         <View
 
             android:layout_width="4dp"
-            android:layout_height="300dp"
-            android:background="@drawable/dash_line"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"/>
+            android:layout_marginRight="12dp"
+            android:background="@drawable/dash_line_vertical"
+            android:layerType="software"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -81,10 +84,10 @@
 
                 android:id="@+id/shuttle_time_1"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="76sp"
+                android:textSize="72sp"
                 android:fontFamily="sans-serif-light"
                 tools:text="14:30" />
 
@@ -150,8 +153,8 @@
                 <TextView
 
                     android:id="@+id/shuttle_risk_2"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:background="@drawable/risk_circle"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
@@ -173,10 +176,11 @@
             <View
 
                 android:layout_width="4dp"
-                android:layout_height="300dp"
-                android:background="@drawable/dash_line"
+                android:layout_height="match_parent"
+                android:background="@drawable/dash_line_vertical"
                 android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"/>
+                android:layout_marginRight="12dp"
+                android:layerType="software"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -189,7 +193,7 @@
 
                     android:id="@+id/shuttle_time_2"
                     android:layout_width="match_parent"
-                    android:layout_height="88dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="72sp"
@@ -274,8 +278,8 @@
             <TextView
 
                 android:id="@+id/shuttle_risk_3"
-                android:layout_width="72dp"
-                android:layout_height="72dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:background="@drawable/risk_circle"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
@@ -297,10 +301,11 @@
         <View
 
             android:layout_width="4dp"
-            android:layout_height="300dp"
-            android:background="@drawable/dash_line"
+            android:layout_height="match_parent"
+            android:background="@drawable/dash_line_vertical"
             android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"/>
+            android:layout_marginRight="12dp"
+            android:layerType="software"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -313,7 +318,7 @@
 
                 android:id="@+id/shuttle_time_3"
                 android:layout_width="match_parent"
-                android:layout_height="88dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textSize="72sp"

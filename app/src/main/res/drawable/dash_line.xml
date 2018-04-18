@@ -4,8 +4,7 @@
         android:top="@dimen/line_width"
         android:bottom="@dimen/line_width"
         android:left="@dimen/line_width">
-        <shape>
-            <solid android:color="@android:color/transparent"/>
+        <shape android:shape="line">
             <stroke
                 android:width="@dimen/line_width"
                 android:color="@android:color/darker_gray"
