@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HavaTime</string>
+    <string name="take_off_airport">Airport</string>
+    <string name="boarding_point">Boarding Point</string>
+    <string name="i_have_luggage">I have luggage</string>
+    <string name="international_flight">International Flight</string>
+    <string name="search">Search</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="IST">ISTANBUL ATATURK AIRPORT</string>
+    <string name="SAW">SABIHA GOKCEN AIRPORT</string>
+    <string name="TAKSIM">TAKSIM</string>
+    <string name="KADIKOY">KADIKOY</string>
+    <string name="YENISAHRA">YENISAHRA</string>
+</resources>

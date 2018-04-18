@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShuttleTime</string>
+    <string name="take_off_airport">Aeropuerto</string>
+    <string name="boarding_point">Punto de Embarque</string>
+    <string name="i_have_luggage">Tengo Equipaje</string>
+    <string name="international_flight">Vuelo Internacional</string>
+    <string name="date">Fecha</string>
+    <string name="time">Hora</string>
+    <string name="search">Buscar</string>
+</resources>
