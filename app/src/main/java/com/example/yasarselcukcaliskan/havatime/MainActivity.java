@@ -34,8 +34,8 @@ import java.util.TimeZone;
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-    private static final Calendar selectedDate = Calendar.getInstance(TimeZone.getTimeZone("Turkey"));
-    private static final Calendar currentDate = Calendar.getInstance(TimeZone.getTimeZone("Turkey"));
+    private static final Calendar selectedDate = Calendar.getInstance();
+    private static final Calendar currentDate = Calendar.getInstance();
     private static boolean isInternational;
     private static boolean haveLuggage;
     private Switch luggageSwitch;
@@ -53,15 +53,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
+        TimeZone.setDefault(TimeZone.getTimeZone("Turkey"));
+        selectedDate.setTimeZone(TimeZone.getDefault());
+        currentDate.setTimeZone(TimeZone.getDefault());
         Log.e(LOG_TAG, Long.toString(currentDate.getTimeInMillis()));
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
         datePicker = findViewById(R.id.date_picker);
         datePickerTextView = findViewById(R.id.date_picker_text_view);
-        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(TimeZone.getTimeZone("Turkey").getOffset(currentDate.getTimeInMillis()) + currentDate.getTimeInMillis()));
+        datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(currentDate.getTime()));
 
         datePicker.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
 
                                 selectedDate.set(year, monthOfYear, dayOfMonth);
-                                datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
+                                datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(selectedDate.getTime()));
                             }
                         }, selectedDate.get(Calendar.YEAR), selectedDate.get(Calendar.MONTH), selectedDate.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.getDatePicker().setMinDate(currentDate.getTimeInMillis());
@@ -86,7 +88,8 @@ public class MainActivity extends AppCompatActivity {
         timePicker = findViewById(R.id.time_picker);
         timePickerTextView = findViewById(R.id.time_picker_text_view);
         selectedDate.setTimeInMillis(currentDate.getTimeInMillis() + 3600000);
-        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
+
+        timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(selectedDate.getTime()));
         timePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000) {
 
-                                    timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(TimeZone.getTimeZone("Turkey").getOffset(selectedDate.getTimeInMillis()) + selectedDate.getTimeInMillis()));
+                                    timePickerTextView.setText(new SimpleDateFormat("HH:mm").format(selectedDate.getTime()));
 
                                 } else {
 
