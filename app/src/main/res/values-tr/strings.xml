@@ -13,4 +13,7 @@
     <string name="KADIKOY">KADIKÖY</string>
     <string name="YENISAHRA">YENİSAHRA</string>
     <string name="search">Ara</string>
+    <string name="no_shuttles">Belirttiğiniz saat için shuttle bulunamadı.</string>
+    <string name="at_least_one_hour">Uçuş saatiniz en az bir saat sonra olmalıdır.</string>
+    <string name="no_internet_connection">İnternet bağlantısı bulunamadı.</string>
 </resources>

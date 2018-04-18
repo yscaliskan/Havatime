@@ -8,4 +8,7 @@
     <string name="date">Fecha</string>
     <string name="time">Hora</string>
     <string name="search">Buscar</string>
+    <string name="no_internet_connection">Usted no tiene una conexión a Internet.</string>
+    <string name="at_least_one_hour">Su tiempo de vuelo debe ser de al menos una hora más tarde.</string>
+    <string name="no_shuttles">No se pueden encontrar shuttles :(</string>
 </resources>
