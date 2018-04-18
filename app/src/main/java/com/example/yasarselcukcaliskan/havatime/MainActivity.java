@@ -42,9 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout timePicker;
     private TextView timePickerTextView;
     private Switch internationalFlightSwitch;
-    private boolean isConnected;
     private Spinner boarding_point_spinner;
-    private ArrayAdapter<CharSequence> adapter1;
     private List<AirportOrganizer.Airport> airports;
     private List<AirportOrganizer.BoardingPoint> sabihaBoardingPoints;
     private List<AirportOrganizer.BoardingPoint> ataturkBoardingPoints;
@@ -56,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
-        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
-        isConnected = activeNetwork.isConnectedOrConnecting() && activeNetwork != null;
 
         datePicker = findViewById(R.id.date_picker);
         datePickerTextView = findViewById(R.id.date_picker_text_view);
@@ -111,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 else{
 
-                                    Toast.makeText(MainActivity.this, "You should pick a time at least one hour after now.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, R.string.at_least_one_hour, Toast.LENGTH_SHORT).show();
                                     selectedDate.set(Calendar.HOUR_OF_DAY, currentDate.get(Calendar.HOUR_OF_DAY));
                                     selectedDate.set(Calendar.MINUTE, currentDate.get(Calendar.MINUTE));
                                 }
@@ -186,18 +181,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                ConnectivityManager connectivityManager = (ConnectivityManager) MainActivity.this.getSystemService(Context.CONNECTIVITY_SERVICE);
+                NetworkInfo activeNetwork = connectivityManager.getActiveNetworkInfo();
+                boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
                 if(selectedDate.getTimeInMillis() - currentDate.getTimeInMillis() > 3600000){
 
-                    if (!isConnected) {
-                        Toast.makeText(MainActivity.this, "You don't have an internet connection.", Toast.LENGTH_LONG).show();
+                    if (isConnected) {
+                        Intent activityChangeIntent = new Intent(view.getContext(), ResultActivity.class);
+                        startActivity(activityChangeIntent);
                         return;
                     }
-                    Intent activityChangeIntent = new Intent(view.getContext(), ResultActivity.class);
-                    startActivity(activityChangeIntent);
+                    else Toast.makeText(MainActivity.this, R.string.no_internet_connection, Toast.LENGTH_SHORT).show();
                 }
                 else{
 
-                    Toast.makeText(MainActivity.this, "Your flight time must be at least one hour from now.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.at_least_one_hour, Toast.LENGTH_SHORT).show();
                 }
             }
         });

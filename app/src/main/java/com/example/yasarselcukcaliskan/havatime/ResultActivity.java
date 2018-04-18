@@ -73,7 +73,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         setContentView(R.layout.result_activity);
 
         emptyStateTextView = findViewById(R.id.empty_state_text_view);
-        emptyStateTextView.setText("No shuttles could be found :(");
+        emptyStateTextView.setText(R.string.no_shuttles);
         emptyStateTextView.setVisibility(View.INVISIBLE);
 
         destinationTextView = findViewById(R.id.destination_header_text_view);
@@ -266,7 +266,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
 
                 if(shuttleRisks.get(0) == -1 && shuttleRisks.get(1) == -1 && shuttleRisks.get(2) == -1){
                     emptyStateTextView = findViewById(R.id.empty_state_text_view);
-                    emptyStateTextView.setText("No shuttles could be found :(");
+                    emptyStateTextView.setText(R.string.no_shuttles);
                     destinationTextView.setVisibility(View.INVISIBLE);
                 }
 
@@ -322,7 +322,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
 
                         if(shuttleRisks.get(0) == -1 && shuttleRisks.get(1) == -1 && shuttleRisks.get(2) == -1){
                             emptyStateTextView = findViewById(R.id.empty_state_text_view);
-                            emptyStateTextView.setText("No shuttles could be found :(");
+                            emptyStateTextView.setText(R.string.no_shuttles);
                             destinationTextView.setVisibility(View.INVISIBLE);
                         }
 
