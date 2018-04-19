@@ -10,4 +10,6 @@
     <dimen name="dashed_line_margin">12dp</dimen>
     <dimen name="mini_icon_size">32dp</dimen>
     <dimen name="mini_icon_margin">48dp</dimen>
+    <dimen name="general_text_size">24sp</dimen>
+    <dimen name="date_text_size">30sp</dimen>
 </resources>
