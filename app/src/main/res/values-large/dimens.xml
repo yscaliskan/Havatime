@@ -2,5 +2,12 @@
 <resources>
     <dimen name="header_text_size">64sp</dimen>
     <dimen name="logo_size">108dp</dimen>
-    <dimen name="general_margin">36dp</dimen>
+    <dimen name="general_margin">16dp</dimen>
+    <dimen name="risk_circle_size">128dp</dimen>
+    <dimen name="risk_text_size">48sp</dimen>
+    <dimen name="risk_word_text_size">28sp</dimen>
+    <dimen name="shuttle_time_text_size">96sp</dimen>
+    <dimen name="dashed_line_margin">12dp</dimen>
+    <dimen name="mini_icon_size">32dp</dimen>
+    <dimen name="mini_icon_margin">48dp</dimen>
 </resources>

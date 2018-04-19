@@ -14,7 +14,7 @@
         android:id="@+id/destination_header_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="@dimen/general_margin"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
         tools:text="TAKSIM -> ISTANBUL ATATURK" />
@@ -26,12 +26,12 @@
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginLeft="@dimen/general_margin"
+        android:layout_marginRight="@dimen/general_margin"
+        android:paddingLeft="@dimen/general_margin"
+        android:paddingRight="@dimen/general_margin"
         android:background="@drawable/item_background"
         android:layout_weight="1"
         android:weightSum="3.2">
@@ -47,8 +47,8 @@
             <TextView
 
                 android:id="@+id/shuttle_risk_1"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/risk_circle_size"
+                android:layout_height="@dimen/risk_circle_size"
                 android:background="@drawable/risk_circle"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
@@ -60,8 +60,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Risk"
-                android:textSize="16sp"
+                android:text="@string/risk"
+                android:textSize="@dimen/risk_word_text_size"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 
@@ -71,8 +71,8 @@
 
             android:layout_width="4dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginLeft="@dimen/dashed_line_margin"
+            android:layout_marginRight="@dimen/dashed_line_margin"
             android:background="@drawable/dash_line_vertical"
             android:layerType="software"/>
 
@@ -91,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="72sp"
+                android:textSize="@dimen/shuttle_time_text_size"
                 android:fontFamily="sans-serif-light"
                 tools:text="14:30" />
 
@@ -103,9 +103,9 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginLeft="34dp"
+                    android:layout_width="@dimen/mini_icon_size"
+                    android:layout_height="@dimen/mini_icon_size"
+                    android:layout_marginLeft="@dimen/mini_icon_margin"
                     android:layout_marginRight="4dp"
                     android:src="@drawable/horizontal_bus_mini_32"/>
 
@@ -115,10 +115,10 @@
                     android:background="#c0c0c0" />
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="@dimen/mini_icon_size"
+                    android:layout_height="@dimen/mini_icon_size"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="@dimen/mini_icon_margin"
                     android:src="@drawable/plane_32"/>
             </LinearLayout>
 
@@ -130,10 +130,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginLeft="@dimen/general_margin"
+        android:layout_marginRight="@dimen/general_margin"
         android:layout_weight="1">
 
         <LinearLayout
@@ -159,8 +159,8 @@
                 <TextView
 
                     android:id="@+id/shuttle_risk_2"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="@dimen/risk_circle_size"
+                    android:layout_height="@dimen/risk_circle_size"
                     android:background="@drawable/risk_circle"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
@@ -172,8 +172,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Risk"
-                    android:textSize="16sp"
+                    android:text="@string/risk"
+                    android:textSize="@dimen/risk_word_text_size"
                     android:layout_gravity="center"
                     android:gravity="center"/>
 
@@ -184,8 +184,8 @@
                 android:layout_width="4dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/dash_line_vertical"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
+                android:layout_marginLeft="@dimen/dashed_line_margin"
+                android:layout_marginRight="@dimen/dashed_line_margin"
                 android:layerType="software"/>
 
             <LinearLayout
@@ -203,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:textSize="72sp"
+                    android:textSize="@dimen/shuttle_time_text_size"
                     android:fontFamily="sans-serif-light"
                     tools:text="14:30" />
 
@@ -215,10 +215,10 @@
                     android:gravity="center">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="@dimen/mini_icon_size"
+                        android:layout_height="@dimen/mini_icon_size"
                         android:layout_marginRight="4dp"
-                        android:layout_marginLeft="34dp"
+                        android:layout_marginLeft="@dimen/mini_icon_margin"
                         android:src="@drawable/horizontal_bus_mini_32"/>
 
                     <View
@@ -227,10 +227,10 @@
                         android:background="#c0c0c0" />
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="@dimen/mini_icon_size"
+                        android:layout_height="@dimen/mini_icon_size"
                         android:layout_marginLeft="4dp"
-                        android:layout_marginRight="34dp"
+                        android:layout_marginRight="@dimen/mini_icon_margin"
                         android:src="@drawable/plane_32"/>
                 </LinearLayout>
 
@@ -266,12 +266,12 @@
         android:layout_height="0dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:layout_marginTop="@dimen/general_margin"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginLeft="@dimen/general_margin"
+        android:layout_marginRight="@dimen/general_margin"
+        android:paddingLeft="@dimen/general_margin"
+        android:paddingRight="@dimen/general_margin"
         android:background="@drawable/item_background"
         android:layout_weight="1"
         android:weightSum="3.2">
@@ -287,8 +287,8 @@
             <TextView
 
                 android:id="@+id/shuttle_risk_3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="@dimen/risk_circle_size"
+                android:layout_height="@dimen/risk_circle_size"
                 android:background="@drawable/risk_circle"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
@@ -300,8 +300,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Risk"
-                android:textSize="16sp"
+                android:text="@string/risk"
+                android:textSize="@dimen/risk_word_text_size"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 
@@ -312,8 +312,8 @@
             android:layout_width="4dp"
             android:layout_height="match_parent"
             android:background="@drawable/dash_line_vertical"
-            android:layout_marginLeft="12dp"
-            android:layout_marginRight="12dp"
+            android:layout_marginLeft="@dimen/dashed_line_margin"
+            android:layout_marginRight="@dimen/dashed_line_margin"
             android:layerType="software"/>
 
         <LinearLayout
@@ -331,7 +331,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textSize="72sp"
+                android:textSize="@dimen/shuttle_time_text_size"
                 android:fontFamily="sans-serif-light"
                 tools:text="14:30" />
 
@@ -343,10 +343,10 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="@dimen/mini_icon_size"
+                    android:layout_height="@dimen/mini_icon_size"
                     android:layout_marginRight="4dp"
-                    android:layout_marginLeft="34dp"
+                    android:layout_marginLeft="@dimen/mini_icon_margin"
                     android:src="@drawable/horizontal_bus_mini_32"/>
 
                 <View
@@ -355,10 +355,10 @@
                     android:background="#c0c0c0" />
 
                 <ImageView
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
+                    android:layout_width="@dimen/mini_icon_size"
+                    android:layout_height="@dimen/mini_icon_size"
                     android:layout_marginLeft="4dp"
-                    android:layout_marginRight="34dp"
+                    android:layout_marginRight="@dimen/mini_icon_margin"
                     android:src="@drawable/plane_32"/>
             </LinearLayout>
 

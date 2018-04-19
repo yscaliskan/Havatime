@@ -11,6 +11,7 @@
     <string name="no_shuttles">No shuttles could be found :(</string>
     <string name="at_least_one_hour">Your flight time should be at least one hour later.</string>
     <string name="no_internet_connection">You do not have an internet connection.</string>
+    <string name="risk">Risk</string>
     <string name="IST">ISTANBUL ATATURK AIRPORT</string>
     <string name="SAW">SABIHA GOKCEN AIRPORT</string>
     <string name="TAKSIM">TAKSIM</string>
