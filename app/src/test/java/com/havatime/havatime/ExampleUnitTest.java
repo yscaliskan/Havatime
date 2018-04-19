@@ -1,4 +1,4 @@
-package com.example.yasarselcukcaliskan.havatime;
+package com.havatime.havatime;
 
 import org.junit.Test;
 

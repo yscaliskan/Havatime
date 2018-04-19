@@ -1,8 +1,7 @@
-package com.example.yasarselcukcaliskan.havatime;
+package com.havatime.havatime;
 
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 

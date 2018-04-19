@@ -1,4 +1,4 @@
-package com.example.yasarselcukcaliskan.havatime;
+package com.havatime.havatime;
 
 import android.app.LoaderManager;
 import android.content.Loader;
@@ -13,10 +13,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.havatime.havatime.R;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by yasarselcukcaliskan on 10.03.2018.
@@ -24,7 +25,6 @@ import java.util.Date;
 
 public class ResultActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Integer>{
 
-    private static final String LOG_TAG = ResultActivity.class.getSimpleName();
     private static final String DISTANCE_MATRIX_API_REQUEST_URL = "https://maps.googleapis.com/maps/api/distancematrix/json?";
     private static final String API_KEY = "AIzaSyC7QKDUunHZWYafcuTi_75XvXddrgogbmI";
     private static final int LOADER_ID = 0;
@@ -136,7 +136,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                 else firstShuttleTime.set(Calendar.MINUTE, 00);
                 break;
         }
-        Log.e(LOG_TAG, "firstShuttleTime = " +  Long.toString(firstShuttleTime.getTimeInMillis()));
         return firstShuttleTime;
     }
 
@@ -222,7 +221,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         else{
             bundle.putString("departureTime", Long.toString(firstShuttleTime.getTimeInMillis() / 1000));
             loaderManager = getLoaderManager();
-            Log.e(LOG_TAG, "Loader Manager initializing...");
             loaderManager.initLoader(LOADER_ID, bundle, this);
         }
     }
@@ -235,9 +233,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         builder.appendQueryParameter("destinations", AirportOrganizer.getBoardingPointCoordinate());
         builder.appendQueryParameter("departure_time", bundle.getString("departureTime"));
         builder.appendQueryParameter("key", API_KEY);
-
-        Log.e(LOG_TAG, builder.toString());
-        Log.e(LOG_TAG, "count = " + Integer.toString(count));
 
         travelTimeLoader = new TravelTimeLoader(this, builder.toString());
         return travelTimeLoader;
@@ -257,8 +252,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
             }
             
             count++;
-            Log.e(LOG_TAG, Integer.toString(shuttleTimes.size()));
-            Log.e(LOG_TAG, "shuttleRisks' size = " + Integer.toString(shuttleRisks.size()));
 
             if (shuttleRisks.size() == 3){
 
@@ -314,8 +307,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                         shuttleTimes.add(null);
                         shuttleRisks.add(-1);
                     }
-
-                    Log.e(LOG_TAG, Integer.toString(shuttleRisks.size()) + "xxx");
 
                     if (shuttleRisks.size() == 3){
 
@@ -376,7 +367,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
     @Override
     public void onLoaderReset(Loader<Integer> loader) {
 
-        Log.e(LOG_TAG, "On Loader Reset.");
     }
 
     private void fixNightInterval(long shuttleTimeInMillis){

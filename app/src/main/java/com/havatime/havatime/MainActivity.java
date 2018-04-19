@@ -1,4 +1,4 @@
-package com.example.yasarselcukcaliskan.havatime;
+package com.havatime.havatime;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -22,32 +22,25 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.havatime.havatime.R;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = MainActivity.class.getSimpleName();
     private static final Calendar selectedDate = Calendar.getInstance();
     private static final Calendar currentDate = Calendar.getInstance();
     private static boolean isInternational;
     private static boolean haveLuggage;
-    private Switch luggageSwitch;
-    private LinearLayout datePicker;
     private TextView datePickerTextView;
-    private LinearLayout timePicker;
     private TextView timePickerTextView;
-    private Switch internationalFlightSwitch;
-    private Spinner boarding_point_spinner;
     private List<AirportOrganizer.Airport> airports;
-    private List<AirportOrganizer.BoardingPoint> sabihaBoardingPoints;
-    private List<AirportOrganizer.BoardingPoint> ataturkBoardingPoints;
     private List<Integer> boardingPointArrays;
 
     @Override
@@ -56,12 +49,11 @@ public class MainActivity extends AppCompatActivity {
         TimeZone.setDefault(TimeZone.getTimeZone("Turkey"));
         selectedDate.setTimeZone(TimeZone.getDefault());
         currentDate.setTimeZone(TimeZone.getDefault());
-        Log.e(LOG_TAG, Long.toString(currentDate.getTimeInMillis()));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
-        datePicker = findViewById(R.id.date_picker);
+        LinearLayout datePicker = findViewById(R.id.date_picker);
         datePickerTextView = findViewById(R.id.date_picker_text_view);
         datePickerTextView.setText(new SimpleDateFormat("dd.MM.yyyy").format(currentDate.getTime()));
 
@@ -85,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        timePicker = findViewById(R.id.time_picker);
+        LinearLayout timePicker = findViewById(R.id.time_picker);
         timePickerTextView = findViewById(R.id.time_picker_text_view);
         selectedDate.setTimeInMillis(currentDate.getTimeInMillis() + 3600000);
 
@@ -124,11 +116,13 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         airport_spinner.setAdapter(adapter);
 
-        boarding_point_spinner = findViewById(R.id.boarding_point_spinner);
+        Spinner boarding_point_spinner = findViewById(R.id.boarding_point_spinner);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getBaseContext(), R.array.sabiha_gokcen_boarding_point, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boarding_point_spinner.setAdapter(adapter1);
 
+        List<AirportOrganizer.BoardingPoint> sabihaBoardingPoints;
+        List<AirportOrganizer.BoardingPoint> ataturkBoardingPoints;
         boardingPointArrays = new ArrayList<>();
         boardingPointArrays.add(R.array.ataturk_boarding_point);
         boardingPointArrays.add(R.array.sabiha_gokcen_boarding_point);
@@ -202,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        internationalFlightSwitch = findViewById(R.id.international_flight_switch);
+        Switch internationalFlightSwitch = findViewById(R.id.international_flight_switch);
         internationalFlightSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -211,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        luggageSwitch = findViewById(R.id.luggage_switch);
+        Switch luggageSwitch = findViewById(R.id.luggage_switch);
         luggageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

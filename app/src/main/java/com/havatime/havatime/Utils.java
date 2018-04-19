@@ -1,4 +1,4 @@
-package com.example.yasarselcukcaliskan.havatime;
+package com.havatime.havatime;
 
 import android.util.Log;
 
@@ -14,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 
 /**
  * Created by yasarselcukcaliskan on 7.03.2018.
@@ -34,7 +33,6 @@ public final class Utils {
             url = new URL(stringUrl);
         }
         catch (MalformedURLException e){
-            Log.e(LOG_TAG, "Error with creating the URL.");
         }
         return url;
     }
@@ -61,11 +59,9 @@ public final class Utils {
                 jsonResponse = readFromStream(inputStream);
             }
             else {
-                Log.e(LOG_TAG, "Response Code: " + httpURLConnection.getResponseCode());
             }
         }
         catch(IOException e){
-            Log.e(LOG_TAG, "Problem retrieving the JSON Results.", e);
         }
 
         finally{
@@ -113,7 +109,6 @@ public final class Utils {
             }
         }
         catch (JSONException e){
-            Log.e(LOG_TAG, "Problem parsing the JSON results.", e);
         }
 
         return travelTime;
@@ -128,7 +123,6 @@ public final class Utils {
             jsonResponse = makeHttpRequest(url);
         }
         catch (IOException ioException){
-            Log.e(LOG_TAG, "Error closing input stream.", ioException);
         }
 
         int travelTime = extractTravelTime(jsonResponse);
