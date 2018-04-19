@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -238,6 +239,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         return travelTimeLoader;
     }
 
+
     @Override
     public void onLoadFinished(Loader<Integer> loader, Integer integer) {
 
@@ -409,6 +411,16 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     private int getRiskColor(int risk){
