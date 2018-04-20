@@ -13,9 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.havatime.havatime.R;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,7 +28,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
     private static final String API_KEY = "AIzaSyC7QKDUunHZWYafcuTi_75XvXddrgogbmI";
     private static final int LOADER_ID = 0;
     private static final int MAX_DOMESTIC_AIRPORT_TIME = 6300;
-    private static final int MIN_DOMESTIC_AIRPORT_TIME = 1800;
+    private static final int MIN_DOMESTIC_AIRPORT_TIME = 2700;
     private static final int MAX_INTERNATIONAL_AIRPORT_TIME = 9000;
     private static final int MIN_INTERNATIONAL_AIRPORT_TIME = 5400;
     private static final int SHUTTLE_INTERVAL_IN_MILLIS = 1800000;
@@ -41,7 +39,7 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
     private static final int SABIHA_LUGGAGE_TIME = 1800;
     private static final int ATATURK_LUGGAGE_TIME = 1200;
     private static final int INTERNATIONAL_RISK_CONSTANT = 36;
-    private static final int DOMESTIC_RISK_CONSTANT = 45;
+    private static final int DOMESTIC_RISK_CONSTANT = 36;
     private static Calendar currentDate = Calendar.getInstance();
 
     private TravelTimeLoader travelTimeLoader;
@@ -142,11 +140,13 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
 
     private int calculateRisk(int travelTime, long shuttleTimeInMillis){
 
+        int risk;
         Calendar selectedDate = MainActivity.getSelectedDate();
-
         Long flightTimeInSeconds = selectedDate.getTimeInMillis() /1000;
         Long shuttleTimeInSeconds = shuttleTimeInMillis / 1000;
-
+        if(firstShuttleTime.get(Calendar.HOUR_OF_DAY) >= 17 && firstShuttleTime.get(Calendar.HOUR_OF_DAY) <= 20) {
+            shuttleTimeInSeconds += 1200;
+        }
         int timeAtAirport;
 
         if(MainActivity.isInternational()){
@@ -157,25 +157,28 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                     case ATATURK:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - ATATURK_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_INTERNATIONAL_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
+                        risk =  (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
                                 INTERNATIONAL_RISK_CONSTANT);
+                        break;
                     case SABIHA_GOKCEN:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - SABIHA_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_INTERNATIONAL_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
+                        risk =  (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
                                 INTERNATIONAL_RISK_CONSTANT);
+                        break;
                     default:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - ATATURK_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_INTERNATIONAL_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
+                        risk =  (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
                                 INTERNATIONAL_RISK_CONSTANT);
+                        break;
                 }
             }
             else{
 
                 timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime);
                 if (timeAtAirport >= MAX_INTERNATIONAL_AIRPORT_TIME) return 3;
-                return (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
+                risk = (int) Math.floor(100 - (timeAtAirport - MIN_INTERNATIONAL_AIRPORT_TIME) /
                         INTERNATIONAL_RISK_CONSTANT);
             }
         }
@@ -188,28 +191,36 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                     case ATATURK:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - ATATURK_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_DOMESTIC_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
+                        risk = (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
                                 DOMESTIC_RISK_CONSTANT);
+                        break;
                     case SABIHA_GOKCEN:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - SABIHA_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_DOMESTIC_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
+                        risk = (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
                                 DOMESTIC_RISK_CONSTANT);
+                        break;
                     default:
                         timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime - ATATURK_LUGGAGE_TIME);
                         if (timeAtAirport >= MAX_DOMESTIC_AIRPORT_TIME) return 3;
-                        return (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
+                        risk = (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
                                 DOMESTIC_RISK_CONSTANT);
+                        break;
                 }
             }
             else{
 
                 timeAtAirport = (int) (flightTimeInSeconds - shuttleTimeInSeconds - travelTime);
                 if (timeAtAirport >= MAX_DOMESTIC_AIRPORT_TIME) return 3;
-                return (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
+                risk = (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
                         DOMESTIC_RISK_CONSTANT);
             }
         }
+
+        if(firstShuttleTime.get(Calendar.HOUR_OF_DAY) >= 16 && firstShuttleTime.get(Calendar.HOUR_OF_DAY) <= 20) {
+            risk += 20;
+        }
+        return risk;
     }
 
     private void calculateTravelTime(Calendar firstShuttleTime){
@@ -232,6 +243,9 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         Uri.Builder builder = baseUri.buildUpon();
         builder.appendQueryParameter("origins", AirportOrganizer.getAirportCoordinate());
         builder.appendQueryParameter("destinations", AirportOrganizer.getBoardingPointCoordinate());
+        if(firstShuttleTime.get(Calendar.HOUR_OF_DAY) >= 16 && firstShuttleTime.get(Calendar.HOUR_OF_DAY) <= 20) {
+            builder.appendQueryParameter("traffic_model", "pessimistic");
+        }
         builder.appendQueryParameter("departure_time", bundle.getString("departureTime"));
         builder.appendQueryParameter("key", API_KEY);
 
