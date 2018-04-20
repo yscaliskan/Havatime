@@ -11,4 +11,10 @@
     <string name="at_least_one_hour">Ihre Flugzeit sollte mindestens eine Stunde später sein.</string>
     <string name="no_shuttles">Kein Shuttle konnte gefunden werden :(</string>
     <string name="no_internet_connection">Sie haben keine Internetverbindung.</string>
+    <string name="risk">Risk</string>
+    <string name="IST">FLUGHAFEN ISTANBUL-ATATURK</string>
+    <string name="SAW">FLUGHAFEN SABIHA GOKCEN</string>
+    <string name="TAKSIM">TAKSIM</string>
+    <string name="KADIKOY">KADIKOY</string>
+    <string name="YENISAHRA">YENISAHRA</string>
 </resources>
