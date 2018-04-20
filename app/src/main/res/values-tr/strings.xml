@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ShuttleTime</string>
+    <string name="app_name">HavaTime</string>
     <string name="take_off_airport">Havalimanı</string>
     <string name="boarding_point">Biniş Noktası</string>
     <string name="i_have_luggage">Bagajım Var</string>

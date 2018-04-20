@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ShuttleTime</string>
+    <string name="app_name">HavaTime</string>
     <string name="take_off_airport">Flughafen</string>
     <string name="boarding_point">Abfahrstsort</string>
-    <string name="i_have_luggage">Ich have Gepäck</string>
+    <string name="i_have_luggage">Ich habe Gepäck</string>
     <string name="international_flight">Internationaler Flug</string>
     <string name="search">Suchen</string>
     <string name="date">Datum</string>
