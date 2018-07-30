@@ -20,6 +20,7 @@ import java.util.Calendar;
 
 /**
  * Created by yasarselcukcaliskan on 10.03.2018.
+ * Result Activity Page.
  */
 
 public class ResultActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Integer>{
@@ -144,9 +145,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
         Calendar selectedDate = MainActivity.getSelectedDate();
         Long flightTimeInSeconds = selectedDate.getTimeInMillis() /1000;
         Long shuttleTimeInSeconds = shuttleTimeInMillis / 1000;
-        if(firstShuttleTime.get(Calendar.HOUR_OF_DAY) >= 17 && firstShuttleTime.get(Calendar.HOUR_OF_DAY) <= 20) {
-            shuttleTimeInSeconds += 1200;
-        }
         int timeAtAirport;
 
         if(MainActivity.isInternational()){
@@ -215,10 +213,6 @@ public class ResultActivity extends AppCompatActivity implements LoaderManager.L
                 risk = (int) Math.floor(100 - (timeAtAirport - MIN_DOMESTIC_AIRPORT_TIME) /
                         DOMESTIC_RISK_CONSTANT);
             }
-        }
-
-        if(firstShuttleTime.get(Calendar.HOUR_OF_DAY) >= 16 && firstShuttleTime.get(Calendar.HOUR_OF_DAY) <= 20) {
-            risk += 20;
         }
         return risk;
     }

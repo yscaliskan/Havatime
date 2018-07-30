@@ -17,15 +17,19 @@ import java.nio.charset.Charset;
 
 /**
  * Created by yasarselcukcaliskan on 7.03.2018.
+ * Utility functions for the app.
  */
+
 
 public final class Utils {
 
     private static final String LOG_TAG = Utils.class.getSimpleName();
 
-    /*
-    * Creates an URL object with the given string.
-    */
+    /**
+     *
+     * @param stringUrl string form of the Url for the Google Matrix Distance API
+     * @return URL object for the Google Matrix Distance API
+     */
     private static URL createUrl(String stringUrl){
         URL url = null;
 
@@ -37,9 +41,12 @@ public final class Utils {
         return url;
     }
 
-    /*
-    * Makes an Http request to the given URL, and returns an JSON Response.
-    */
+    /**
+     * Makes an Http request to the given URL, and returns an JSON Response.
+     * @param url URL object for the Google Distance Matrix API
+     * @return JSON object returned from Google Matrix Distance API
+     * @throws IOException
+     */
     private static String makeHttpRequest(URL url) throws IOException{
 
         String jsonResponse = "";
@@ -76,6 +83,12 @@ public final class Utils {
         return jsonResponse;
     }
 
+    /**
+     *
+     * @param inputStream inputStream object
+     * @return stringBuilder object from the stream
+     * @throws IOException
+     */
     private static String readFromStream(InputStream inputStream) throws IOException{
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -93,6 +106,11 @@ public final class Utils {
         return stringBuilder.toString();
     }
 
+    /**
+     * Parses the JSON data to extract the travel time.
+     * @param jsonResponse raw JSONResponse
+     * @return extracted travel time
+     */
     private static int extractTravelTime(String jsonResponse){
 
         int travelTime = 0;
@@ -114,6 +132,11 @@ public final class Utils {
         return travelTime;
     }
 
+    /**
+     * Organizator function that makes the Http request, gets the JSON and parses it to extract travel time.
+     * @param requestUrl string Url to make the request.
+     * @return travel time.
+     */
     public static int fetchTravelTimeData(String requestUrl){
 
         URL url = createUrl(requestUrl);

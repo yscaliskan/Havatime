@@ -7,6 +7,7 @@ import java.util.Map;
 
 /**
  * Created by yasarselcukcaliskan on 10.03.2018.
+ * Utility class that organizes data of airports.
  */
 
 public class AirportOrganizer extends AppCompatActivity {
@@ -33,6 +34,10 @@ public class AirportOrganizer extends AppCompatActivity {
 
     private static Map<BoardingPoint, String> boardingPointCoordinatesMap = new HashMap<>();
 
+    /**
+     * Sets the airport.
+     * @param pAirport Airport chosen by the user.
+     */
     public static void setAirport(Airport pAirport){
 
         if (pAirport instanceof Airport){
@@ -45,6 +50,10 @@ public class AirportOrganizer extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sets the boarding point.
+     * @param pBoardingPoint Boarding Point chosen by the user.
+     */
     public static void setBoardingPoint(BoardingPoint pBoardingPoint){
 
         if (pBoardingPoint instanceof BoardingPoint){
@@ -58,22 +67,38 @@ public class AirportOrganizer extends AppCompatActivity {
         }
     }
 
+    /**
+     *
+     * @return Airport
+     */
     public static Airport getAirport(){
 
         return airport;
     }
 
+    /**
+     * @return Boarding Point
+     */
     public static BoardingPoint getBoardingPoint(){
 
         return boardingPoint;
     }
 
+    /**
+     *
+     * @return Hardcoded coordinates of the chosen airport.
+     */
     public static String getAirportCoordinate(){
 
         airportCoordinatesMap.put(Airport.ATATURK, ATATURK_COORDINATES);
         airportCoordinatesMap.put(Airport.SABIHA_GOKCEN, SABIHA_GOKCEN_COORDINATES);
         return airportCoordinatesMap.get(airport);
     }
+
+    /**
+     *
+     * @return Hardcoded coordinates of the chosen boarding point.
+     */
     public static String getBoardingPointCoordinate(){
 
         boardingPointCoordinatesMap.put(BoardingPoint.TAKSIM, TAKSIM_COORDINATES);

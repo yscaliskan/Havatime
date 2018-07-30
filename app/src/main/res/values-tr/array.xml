@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="airport_array">
-        <item>Ataturk Airport</item>
-        <item>Sabiha Gokcen Airport</item>
+        <item>Atatürk Havalimanı</item>
+        <item>Sabiha Gökçen Havalimanı</item>
     </string-array>
     <string-array name="ataturk_boarding_point">
         <item>Taksim</item>
     </string-array>
     <string-array name="sabiha_gokcen_boarding_point">
         <item>Taksim</item>
-        <item>Kadikoy</item>
+        <item>Kadıköy</item>
         <item>Yenisahra</item>
     </string-array>
 </resources>

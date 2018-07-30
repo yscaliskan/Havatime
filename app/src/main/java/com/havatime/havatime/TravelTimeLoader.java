@@ -6,17 +6,27 @@ import android.util.Log;
 
 /**
  * Created by yasarselcukcaliskan on 9.03.2018.
+ * AsyncTaskLoader class.
  */
 
+/**
+ *
+ */
 public class TravelTimeLoader extends AsyncTaskLoader<Integer> {
 
     private String mUrl;
 
+    /**
+     *
+     * @param context context
+     * @param url url
+     */
     public TravelTimeLoader(Context context, String url){
 
         super(context);
         mUrl = url;
     }
+
 
     @Override
     protected void onStartLoading() {
@@ -24,6 +34,10 @@ public class TravelTimeLoader extends AsyncTaskLoader<Integer> {
         forceLoad();
     }
 
+    /**
+     *
+     * @return the travel time
+     */
     @Override
     public Integer loadInBackground() {
 
